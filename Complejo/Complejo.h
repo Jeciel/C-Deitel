@@ -12,6 +12,10 @@ class Complejo
     Complejo suma(Complejo *, Complejo *);
     Complejo resta(Complejo *, Complejo *);
     void imprimir();
+    
+    //Sobre carga de operadores
+    bool operator==(const Complejo &) const;
+    Complejo operator+(const Complejo &);
 
   private:
     double parteReal, parteImaginaria;
