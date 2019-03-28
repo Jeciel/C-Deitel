@@ -9,13 +9,22 @@ class Complejo
     void setParteImaginaria(double = 1);
     double getParteReal();
     double getParteImaginaria();
-    Complejo suma(Complejo *, Complejo *);
-    Complejo resta(Complejo *, Complejo *);
+
     void imprimir();
-    
-    //Sobre carga de operadores
+
+   
+    //Sobre carga de operadores Complejo a Complejo
     bool operator==(const Complejo &) const;
     Complejo operator+(const Complejo &);
+    Complejo operator-(const Complejo &);
+
+    //Sobre carga de operadores Complejo a Double     
+    bool operator==(const double) const;
+    Complejo operator+(const double);
+    Complejo operator-(const double);
+
+    Complejo operator*(const double); //multiplicacion Complejo * Dobule
+    //TODO Double * Complejo
 
   private:
     double parteReal, parteImaginaria;

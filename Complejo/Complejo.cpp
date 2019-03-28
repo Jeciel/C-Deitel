@@ -27,42 +27,50 @@ double Complejo::getParteImaginaria(){
     return parteImaginaria;
 }
 
-Complejo Complejo::suma( Complejo * a, Complejo * b)
-{
-    if (a != NULL && b != NULL)
-    {   
-        return Complejo(a->getParteReal() + b->getParteReal(), a->getParteImaginaria()+b->getParteImaginaria());
-    }
-    return NULL;
-}
-
-Complejo Complejo::resta(Complejo * a, Complejo * b)
-{
-    //TODO agragar una excepcion a null
-    if (a != NULL && b != NULL)
-    {   
-        return Complejo(a->getParteReal() - b->getParteReal(), a->getParteImaginaria()-b->getParteImaginaria());
-    }
-    return NULL;
-}
-
 void Complejo::imprimir()
 {
     std::cout<<std::setprecision(2)<<getParteReal()<<" + "<<getParteImaginaria()<<"i"<<std::endl;
 }
 
-//Sobrevcarga de operadores
+////////////////////////////Sobrecarga de operadores//////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+//Igualdad Complejo == Complejo
 bool Complejo::operator==(const Complejo &a) const{
    return (parteReal == a.parteReal && parteImaginaria == a.parteImaginaria);
 }
 
+//Suma Complejo + Complejo
 Complejo Complejo::operator+(const Complejo &a){
     return Complejo(this->getParteReal()+ a.parteReal, this->getParteImaginaria()+a.parteImaginaria);
-
 }
 
+//Resta Complejo - Complejo
+Complejo Complejo::operator-(const Complejo &a){
+    return Complejo(this->getParteReal()- a.parteReal, this->getParteImaginaria()-a.parteImaginaria);
+}
 
-Complejo suma( Complejo * a, Complejo * b)
+//Iguldad Complejo == Double
+bool Complejo::operator==(const double a) const{
+   return (parteReal == a && parteImaginaria == 0);
+}
+
+//Suma Complejo + Double 
+Complejo Complejo::operator+(const double a){
+    return Complejo(this->getParteReal()+ a, this->getParteImaginaria()+a);
+}
+
+//Resta Complejo - Double
+Complejo Complejo::operator-(const double a){
+    return Complejo(this->getParteReal()- a, this->getParteImaginaria()-a);
+}
+
+//Multiplicacion Complejo * Double
+Complejo Complejo::operator*(const double a){
+    return Complejo(this->getParteReal()*a, this->getParteImaginaria()*a);
+}
+
+/*Complejo suma( Complejo * a, Complejo * b)
 {
     if (a != NULL && b != NULL)
     {   
@@ -70,3 +78,4 @@ Complejo suma( Complejo * a, Complejo * b)
     }
     return NULL;
 }
+*/
